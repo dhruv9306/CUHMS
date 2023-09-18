@@ -73,11 +73,11 @@
 
             </div>
             <div class="contact-col">
-                <form action="form_handle.php" method="post">
-                    <input type="text" name="name" placeholder="Enter Your Name"required>
-                    <input type="email" name="email" placeholder="Enter email address"required>
-                    <input type="text" name="subject" placeholder="Enter Your Subject"required>
-                    <textarea rows="9" name="message" placeholder="Message"required></textarea>
+                <form onsubmit="sendemail(); reset();return false;">
+                    <input type="text" name="name" placeholder="Enter Your Name" required>
+                    <input type="email" name="email" placeholder="Enter email address" required>
+                    <input type="text" name="subject" placeholder="Enter Your Subject" required>
+                    <textarea rows="9" name="message" placeholder="Message" required></textarea>
                     <button type="submit" class="hero-btn red-btn">Send Message</button>
                 </form>
             </div>
@@ -97,8 +97,24 @@
 
     </section>
 
-
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
     <script>
+        function sendemail() {
+            Email.send({
+                Host: "smtp.gmail.com",
+                Username: "dhruvgandhi870842@gmail.com",
+                Password: "dG98@2003",
+                To: 'dhruv.gandhi9306@gmail.com',
+                From: document.getElementById("email").value,
+                Subject: "new form received",
+                Body: "And this is the body"
+            }).then(
+                message => alert(message)
+            );
+        }
+    </script>
+    <script>
+        
         var navlinks2 = document.getElementById("navlinks2");
         function showMenu() {
             navlinks2.style.right = "0";
@@ -107,6 +123,10 @@
             navlinks2.style.right = "-200px";
         }
     </script>
+
+
+
+
 </body>
 
 </html>
